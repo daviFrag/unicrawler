@@ -1,0 +1,4 @@
+telebot
+feedparser
+pytz
+bs4

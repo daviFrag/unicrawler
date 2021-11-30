@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  scraper:
+      restart: always
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          buildno: 1
+      volumes:
+        - ./:/bot
