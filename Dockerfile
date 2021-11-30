@@ -5,7 +5,7 @@ WORKDIR /bot
 
 COPY ./requirements.txt ./requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && mkdir cache
 
 COPY . /bot
 
