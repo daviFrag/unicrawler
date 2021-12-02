@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+import urllib
 
 from fetchers import Event, News
 
@@ -24,7 +25,7 @@ class TgMsg:
 
 
     def send_message(self, msg : str, chat_id : str):
-        r = requests.get(f"https://api.telegram.org/bot{self.tg_secret}/sendMessage?chat_id={chat_id}&text={msg}&parse_mode=HTML")
+        r = requests.get(f"https://api.telegram.org/bot{self.tg_secret}/sendMessage?chat_id={chat_id}&text={urllib.parse.quote(msg, safe='')}&parse_mode=HTML")
         with open('logs.txt', 'a') as f:
             f.write(r.text+"\n")
             print(r.text)
@@ -46,7 +47,7 @@ def newsToMsg(obj : News) -> str:
     #     case "ATENEO":
     #         return  '<b>ATENEO news</> \n' + content.title + '\n' + content.link + '\n' + content.published
     if obj.category=="DMATH":
-        return '<b>%23NEWS</> \n' + content.title + '\n' + content.link + '\n' + content.published
+        return '<b>#NEWS</> \n' + content.title + '\n' + content.link + '\n' + content.published
     elif obj.category=="ATENEO":
-        return '<b>%23ATENEO</> \n' + content.title + '\n' + content.link + '\n' + content.published
+        return '<b>#ATENEO</> \n' + content.title + '\n' + content.link + '\n' + content.published
     return ""
