@@ -47,6 +47,5 @@ def newsToMsg(obj : News) -> str:
     #         return  '<b>ATENEO news</> \n' + content.title + '\n' + content.link + '\n' + content.published
     if obj.category=="DMATH":
         return f"#NEWS \n<b>Titolo: </>{content.title}\n<b>Link: </>{content.link}"
-    elif obj.category=="ATENEO":
+    else:
         return f"#ATENEO \n<b>Titolo: </>{content.title}\n<b>Link: </>{content.link}"
-    return ""
