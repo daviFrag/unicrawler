@@ -46,7 +46,7 @@ def newsToMsg(obj : News) -> str:
     #     case "ATENEO":
     #         return  '<b>ATENEO news</> \n' + content.title + '\n' + content.link + '\n' + content.published
     if obj.category=="DMATH":
-        return '#NEWS \n' + content.title + '\n' + content.link + '\n' + content.published
+        return '<b>&#35;NEWS</> \n' + content.title + '\n' + content.link + '\n' + content.published
     elif obj.category=="ATENEO":
         return '<b>ATENEO</> \n' + content.title + '\n' + content.link + '\n' + content.published
     return ""
