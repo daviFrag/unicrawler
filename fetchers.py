@@ -123,16 +123,14 @@ def fetch_news( tags : typing.List[str] ) -> typing.List[News] :
     cached_news = get_cached_objs(News.__name__)
     news = []
     # Leggo tutti i post pubblicati sui tag inseriti
-    # TODO piccolo bug, dato che le news ateneo e dmath collidono, bisogna fare la differenza tra le due news, o se no accettare un duplicazione del messaggio
-    # Se si vorrà utilizzare questo bot per tutti i dipartimenti, si potrà differenziare le news per categoria e successivamente inviare i messaggi al relativo canale
     for tag in tags:
         feed = feedparser.parse(f"https://webmagazine.unitn.it/rss/{tag}/news.xml")
         entries = iter(feed.entries)
-
         for entry in entries:
-            #voglio stampare solo le news che non sono nella cache
-            if len([x for x in cached_news if(x.content['title']==entry['title'] and x.content['published']==entry['published'])])==0:
-                news.append(News({"category":tag.upper(),"content":entry}))
+            #voglio stampare solo le news che non sono nella cache o sono state fetchate precedentemente
+            if len([x for x in news if(x.content['title']==entry['title'] and x.content['published']==entry['published'])])==0:
+                if len([x for x in cached_news if(x.content['title']==entry['title'] and x.content['published']==entry['published'])])==0:
+                    news.append(News({"category":tag.upper(),"content":entry}))
 
     if len(news)>0:
         add_cache_objs(cached_news,news)

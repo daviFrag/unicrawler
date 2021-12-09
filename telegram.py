@@ -34,7 +34,7 @@ class TgMsg:
 Function responsable for casting an Event obj to a string
 '''
 def eventToMsg(obj : Event) -> str:
-    return '<b>EVENTO</> \n' + obj.title + '\n' + obj.day + ' ' + obj.date + '\n' + obj.url
+    return '<b>#EVENTO</> \n' + obj.title + '\n' + obj.day + ' ' + obj.date + '\n' + obj.url
 
 '''
 Function responsable for casting a News obj to a string

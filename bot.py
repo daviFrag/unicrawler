@@ -23,7 +23,7 @@ CHAT_ID = "@unitnmatematica"
 def bot():
 	tg = telegram.TgMsg()
 	while True:
-		news = fetch_news(["dmath","ateneo"]) # metti sempre ateneo in fondo
+		news = fetch_news(["ateneo","dmath"]) # metti sempre ateneo come primo elemento
 		events = fetch_calendar(["dmath"])
 		for n in news:
 			tg.send_message(telegram.newsToMsg(n), CHAT_ID)
