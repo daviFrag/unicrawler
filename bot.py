@@ -18,7 +18,8 @@ if hasattr(ssl, '_create_unverified_context'):
 cet = timezone('CET')
 
 
-CHAT_ID = "@unitnmatematica"
+# CHAT_ID = "@unitnmatematica"
+CHAT_ID = "@rappmateunitn"
 
 def bot():
 	tg = telegram.TgMsg()
