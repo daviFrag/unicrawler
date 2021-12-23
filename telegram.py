@@ -34,7 +34,7 @@ class TgMsg:
 Function responsable for casting an Event obj to a string
 '''
 def eventToMsg(obj : Event) -> str:
-    return '<b>#EVENTO</> \n' + obj.title + '\n' + obj.day + ' ' + obj.date + '\n' + obj.url
+    return f"<b>#EVENTO</> \n<b>Titolo: </>{obj.title} \n<b>Data: </>{obj.day} {obj.date} \n<b>Link: </>{obj.url}"
 
 '''
 Function responsable for casting a News obj to a string
@@ -47,7 +47,7 @@ def newsToMsg(obj : News) -> str:
     #     case "ATENEO":
     #         return  '<b>ATENEO news</> \n' + content.title + '\n' + content.link + '\n' + content.published
     if obj.category=="DMATH":
-        return f"<b>#NEWS</> \n{content.title} \n {content.link}"
+        return f"<b>#NEWS</> \n<b>Titolo: </>{content.title} \n<b>Link: </>{content.link}"
     elif obj.category=="ATENEO":
-        return f"<b>#ATENEO</> \n{content.title} \n {content.link}"
+        return f"<b>#ATENEO</> \n<b>Titolo: </>{content.title} \n<b>Link: </>{content.link}"
     return ""
